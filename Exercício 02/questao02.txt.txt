@@ -74,3 +74,29 @@ insert into historico values(2015010105, 'BD', 2, 212131, 2015, 4, 4.5);
 insert into historico values(2015010106, 'WEB', 1, 192011, 2015, 8, 5.5);
 
 
+
+--Encontre a MAT dos alunos com nota em BD em 2015 menor que 5 (obs: BD = código da disciplinas).
+
+select a.mat as Matricula, a.nome 
+from alunos a join historico h on h.mat=a.mat 
+where cod_disc='BD' and nota < 5;
+
+--Encontre a MAT e calcule a média das notas dos alunos na disciplina de POO em 2015.
+
+select a.mat as Matricula, a.nome, avg(h.nota) 
+from alunos a join historico h on h.mat=a.mat
+where h.cod_disc='POO' group by a.mat;
+
+--Encontre a MAT e calcule a média das notas dos alunos na disciplina de POO em 2015 e que esta média seja superior a 6.
+
+select A.mat as Matricula, A.nome, H.nota 
+from alunos A join historico H on H.mat=A.mat
+where H.cod_disc='POO' 
+group by H.nota, A.mat 
+having avg(H.nota) > 6;
+
+
+--Encontre quantos alunos não são de Natal.
+
+select count(mat) as alunos_nao_natal from alunos where cidade <> 'NATAL';
+
