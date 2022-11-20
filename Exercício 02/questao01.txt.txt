@@ -5,8 +5,7 @@ CREATE TABLE public.produtos
     id_nf integer NOT NULL,
     id_item integer NOT NULL,
     cod_prod integer NOT NULL,
-    desconto integer,
-    PRIMARY KEY (cod_prod)
+    desconto integer
 );
 
 ALTER TABLE public.produtos
